@@ -435,7 +435,7 @@ def subtract_bkg(frame, parameters=None, call_num=None):
     
 
     subtract_bkg_type
-        Type of background substraction to be performed. Options are are 'mean' or 'img'. 
+        Type of background substraction to be performed. Options are are 'mean', 'value' or 'img'. 
     subtract_bkg_filename
         filename of background image. If None it will look for a file named moviefilename_bkgimg.png. Otherwise it looks for the filename specified. The filename is assumed to be in the same directory as the movie. Alternatively specify the full path to the file. 
     subtract_bkg_blur_kernel
@@ -470,6 +470,10 @@ def subtract_bkg(frame, parameters=None, call_num=None):
             mean_val = int(np.mean(frame))
             subtract_frame = mean_val * np.ones(np.shape(frame), dtype=np.uint8)
             frame2=frame
+        elif bkgtype == 'value':
+            val = get_param_val(params['subtract_bkg_val'])
+            subtract_frame = val * np.ones(np.shape(frame), dtype=np.uint8)
+            frame2 = frame
         elif bkgtype == 'image':
             # This option subtracts the previously created image which is added to dictionary.
             #These parameters are fed to the blur function
