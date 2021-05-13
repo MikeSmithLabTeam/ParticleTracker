@@ -26,6 +26,10 @@ def create_param_file(filename):
                               'C': [-23, -30, 30, 1],
                               'ad_mode': [True, ('True', 'False')]
                               },
+        'canny_edge':{'threshold1':100,
+                       'threshold2':200,
+                       'apertureSize':3
+                       },
         'colour_channel':{'colour':['red',('red','green','blue')]},
         'distance':{},
         'blur':{'kernel':[1,1,15,2]},

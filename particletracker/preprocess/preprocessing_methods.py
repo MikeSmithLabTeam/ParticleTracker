@@ -100,6 +100,35 @@ def blur(frame, parameters=None, call_num=None):
     except Exception as e:
         raise BlurError(e)
         
+def canny_edge(frame, parameters=None, call_num=None):
+    """Implements the opencv canny edge detector algorithm
+
+    Args
+    ----
+    frame
+        This must be a colour / single colour channel image
+    parameters
+        Nested dictionary like object (same as .param files or output from general.param_file_creator.py
+    call_num
+        Usually None but if multiple calls are made modifies method name with get_method_key
+
+    Returns
+    -------
+        binary image
+
+    """
+    method_key = get_method_key('canny_edge', call_num=call_num)
+    params = parameters['preprocess'][method_key]
+    threshold1 = get_param_val(params['threshold1'])
+    threshold2 = get_param_val(params['threshold2'])
+    apertureSize = get_param_val(params['apertureSize'])
+    new_frame = cv2.Canny(frame, threshold1, threshold2, apertureSize=apertureSize)
+
+    try:
+        return new_frame
+    except Exception as e:
+        raise CannyEdgeError(e)
+
 
 def colour_channel(frame, parameters=None, call_num=None):
     '''

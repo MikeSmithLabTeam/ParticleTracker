@@ -11,6 +11,13 @@ class BlurError(PreprocessorError):
         super().__init__(e)
         self.error_msg = 'blur error - Check input is grayscale'
         self.e=e
+    
+class CannyEdgeError(PreprocessorError):
+    def __init__(self,e):
+        super().__init__(e)
+        self.error_msg = 'canny edge error'
+        self.e=e
+    
 
 class ColorChannelError(PreprocessorError):
     def __init__(self,e):
