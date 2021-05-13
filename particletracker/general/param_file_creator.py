@@ -28,7 +28,7 @@ def create_param_file(filename):
                               },
         'canny_edge':{'threshold1':[100,0,255,1],
                        'threshold2':[200,0,255,1],
-                       'apertureSize':[1,3,11,2]
+                       'apertureSize':[3,3,7,2]
                        },
         'colour_channel':{'colour':['red',('red','green','blue')]},
         'distance':{},
